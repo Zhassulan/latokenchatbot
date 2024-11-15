@@ -3,17 +3,18 @@ const messageElement = document.getElementById('message');
 const outputElement = document.getElementById('messageArea');
 
 function sendMessage() {
-  const message = new ChatMessage(messageElement.value);
-  addToChatContent(message);
-  const response = await fetch(apiUrl, {
+    let msg = messageElement.value
+    addToChatContent(msg);
+    const message = new ChatMessage(messageElement.value);
+
+  const response = fetch(apiUrl, {
     method: 'POST',
     body: message,
     headers: {
       'Content-Type': 'application/json'
     }
   });
-  const response = await response.json();
-  addToChatContent(response);
+  addToChatContent(response.json().response);
 }
 
 addToChatContent(msg) {
