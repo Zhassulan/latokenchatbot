@@ -1,7 +1,40 @@
+<!--index.html file-->
+
+<!DOCTYPE html>
 <html>
-<head><title>Home Page</title></head>
+
+<head>
+    <title>GeeksforGeeks ChatRoom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-<h1>Hello !</h1>
-<p>Welcome to <span th:text="${appName}">Our App</span></p>
+<div class="container">
+    <h1 class="logo">GeeksforGeeks ChatRoom</h1>
+    <form class="form" id="form">
+        <input class="input" type="text" placeholder="Name" id="myname">
+        <input class="input" type="text" placeholder="Message" id="message">
+        <button class="button">Send Message</button>
+    </form>
+    <div class="messageArea" id="messageArea"></div>
+</div>
+
+<script src="classes.js"></script>
+<script src="script.js"></script>
+
+<script>
+    let message = document.getElementById('message');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (message.value) {
+            sendMessage(message.value);
+            message.value = '';
+        }
+    });
+</script>
+
 </body>
+
 </html>
