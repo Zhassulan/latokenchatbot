@@ -17,14 +17,17 @@ function sendMessage() {
     addToChatContent(msg);
     const message = new ChatMessage(messageElement.value);
 
-  const response = fetch(apiUrl, {
+  const response = fetch(apiUrl + "/send", {
     method: 'POST',
-    body: message,
+    body: JSON.stringify(message),
     headers: {
       'Content-Type': 'application/json'
     }
-  });
-  addToChatContent(response.json().response);
+  })
+  .then((response) => response.json())
+    .then((data) => {
+        addToChatContent(data.response)
+    })
 }
 
 function addToChatContent(msg) {
