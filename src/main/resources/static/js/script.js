@@ -1,6 +1,16 @@
-const apiUrl = 'localhost:8080/api/v1/chat';
+const apiUrl = 'http://localhost:8080/api/v1/chat';
 const messageElement = document.getElementById('message');
 const outputElement = document.getElementById('messageArea');
+const form = document.getElementById('form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (messageElement.value) {
+        sendMessage(messageElement.value);
+        messageElement.value = '';
+    }
+});
 
 function sendMessage() {
     let msg = messageElement.value
@@ -17,7 +27,7 @@ function sendMessage() {
   addToChatContent(response.json().response);
 }
 
-addToChatContent(msg) {
+function addToChatContent(msg) {
   let chatContent = document.createElement('p');
   chatContent.classList.add('message');
   chatContent.textContent = msg;
