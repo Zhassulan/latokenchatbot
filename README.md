@@ -8,3 +8,4 @@
 ## Run command:
 >java -jar .\chatbot.jar -DOPENAIAPIKEY=YOUR_KEY
 
+Then follow by URL http://localhost:8080/
