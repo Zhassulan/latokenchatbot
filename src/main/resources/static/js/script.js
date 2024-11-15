@@ -2,7 +2,7 @@ const apiUrl = 'localhost:8080/api/v1/chat';
 const messageElement = document.getElementById('message');
 const outputElement = document.getElementById('messageArea');
 
-const sendMessage = async () => {
+function sendMessage() {
   const message = new ChatMessage(messageElement.value);
   addToChatContent(message);
   const response = await fetch(apiUrl, {
