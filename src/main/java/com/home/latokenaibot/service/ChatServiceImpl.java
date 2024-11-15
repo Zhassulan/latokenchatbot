@@ -21,8 +21,11 @@ public class ChatServiceImpl implements InitializingBean, ChatService {
 
     @Override
     public ChatResponse send(ChatMessage chatMessage) {
+        String response = chatClient.prompt(chatMessage.getMessage())
+                .call()
+                .content();
         return ChatResponse.builder()
-                .response(chatClient.prompt(chatMessage.getMessage()).call().content())
+                .response(response)
                 .build();
     }
 }
